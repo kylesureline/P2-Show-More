@@ -39,7 +39,7 @@ function createExcerpts() {
         $(this).parent().attr('id','');
         $(this).parent().slideUp(100, function(){
             $(this).parent().prev().attr('id',ID);
-            $(this).parent().prev().slideDown("slow");
+            $(this).parent().prev().slideDown(100);
         });
     });
 }

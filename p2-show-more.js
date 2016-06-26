@@ -29,17 +29,17 @@ function createExcerpts() {
     $('.showless').click(function(){
         var ID = $(this).parent().attr('id');
         $(this).parent().attr('id','');
-        $(this).parent().slideUp(100,function(){
+        $(this).parent().slideUp(1000,function(){
             $(this).parent().next().attr('id',ID);
-            $(this).parent().next().slideDown(100);
+            $(this).parent().next().slideDown(1000);
         });
     });
     $('.showmore').click(function(){
         var ID = $(this).parent().attr('id');
         $(this).parent().attr('id','');
-        $(this).parent().slideUp(100, function(){
+        $(this).parent().slideUp(1000, function(){
             $(this).parent().prev().attr('id',ID);
-            $(this).parent().prev().slideDown(100);
+            $(this).parent().prev().slideDown(1000);
         });
     });
 }

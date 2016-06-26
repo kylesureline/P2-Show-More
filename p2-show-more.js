@@ -31,14 +31,14 @@ function createExcerpts() {
         $(this).parent().attr('id','');
         $(this).parent().hide();
         $(this).parent().next().attr('id',ID);
-        $(this).parent().next().show();
+        $(this).parent().next().slideDown();
     });
     $('.showmore').click(function(){
         var ID = $(this).parent().attr('id');
         $(this).parent().attr('id','');
         $(this).parent().hide();
         $(this).parent().prev().attr('id',ID);
-        $(this).parent().prev().show();
+        $(this).parent().prev().slideDown();
     });
 }
     $(document).ready(createExcerpts());

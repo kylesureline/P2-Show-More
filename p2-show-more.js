@@ -37,7 +37,7 @@ function createExcerpts() {
         fullpost.slideUp("slow", function() {
             excerpt.slideDown("slow");
             $('html, body').stop().animate({
-                scrollTop: excerpt.next().offset().top
+                scrollTop: excerpt.offset().top
             });
         });
     });

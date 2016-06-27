@@ -27,18 +27,34 @@ function createExcerpts() {
         }
     });
     $('.showless').click(function(){
-        var ID = $(this).parent().attr('id');
-        $(this).parent().attr('id','');
-        $(this).parent().hide();
-        $(this).parent().next().attr('id',ID);
-        $(this).parent().next().slideDown("slow");
+        var excerpt = $(this).parent().next();
+        var fullpost = $(this).parent();
+        // prevent duplicate IDs
+        var ID = fullpost.attr('id');
+        fullpost.attr('id','');
+        excerpt.attr('id',ID);
+        // animate
+        fullpost.slideUp("slow", function() {
+            excerpt.slideDown("slow");
+            $('html, body').stop().animate({
+                scrollTop: excerpt.next().offset().top
+            });
+        });
     });
     $('.showmore').click(function(){
+        var excerpt = $(this).parent();
+        var fullpost = $(this).parent().prev();
+        // prevent duplicate IDs
         var ID = $(this).parent().attr('id');
-        $(this).parent().attr('id','');
-        $(this).parent().hide();
-        $(this).parent().prev().attr('id',ID);
-        $(this).parent().prev().slideDown("slow");
+        fullpost.attr('id',ID);
+        excerpt.attr('id','');
+        // animate
+        excerpt.slideUp("slow", function() {
+            fullpost.slideDown("slow");
+            $('html, body').stop().animate({
+                scrollTop: fullpost.prev().offset().top
+            });
+        });
     });
 }
     $(document).ready(createExcerpts());

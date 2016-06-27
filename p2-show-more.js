@@ -35,9 +35,10 @@ function createExcerpts() {
         excerpt.attr('id',ID);
         // animate
         fullpost.slideUp("slow", function() {
-            excerpt.slideDown("slow");
-            $('html, body').stop().animate({
-                scrollTop: excerpt.prev().prev().offset().top
+            excerpt.slideDown("slow", function() {
+                $('html, body').stop().animate({
+                    scrollTop: excerpt.prev().prev().offset().top
+                });
             });
         });
     });
@@ -50,9 +51,10 @@ function createExcerpts() {
         excerpt.attr('id','');
         // animate
         excerpt.slideUp("slow", function() {
-            fullpost.slideDown("slow");
-            $('html, body').stop().animate({
-                scrollTop: fullpost.prev().offset().top
+            fullpost.slideDown("slow", function() {
+                $('html, body').stop().animate({
+                    scrollTop: fullpost.prev().offset().top
+                });
             });
         });
     });

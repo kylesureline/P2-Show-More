@@ -40,9 +40,8 @@ function createExcerpts() {
                 img.attr('itemprop', '');
                 img.attr('style', '');
                 // Append filename with thumbnail filename
-                var newSource = img.attr('src').replace('.jpg', '-150x150.jpg');
-                newSource = img.attr('src').replace('jpeg', '-150x150.jpeg')
-                img.attr('src', newSource);
+                var source = img.attr('src');
+                source.replace('.jpg', '-150x150.jpg');
             }
             else {
                 var img = "";

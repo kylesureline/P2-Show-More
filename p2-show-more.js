@@ -3,8 +3,8 @@ $.fn.exists = function() {
     return this.length !== 0;
 }
 function createExcerpts() {
-    // do nothing on single post views
-    if(!$('body').hasClass('single')) {
+    // do nothing on single post or page views
+    if($('body').hasClass('blog')) {
         // duplicate each post, adding appropriate classes
         $('.postcontent').each(function() {
             if($(this).hasClass('excerptCreated')) {

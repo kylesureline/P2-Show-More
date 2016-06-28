@@ -103,6 +103,13 @@ function createExcerpts() {
                 });
             });
         });
+        // undo processing if you want to edit the post
+        $('.edit-post-link').click(function(){
+            var rel = $(this).attr('rel');
+            $('#content-' + rel).show();
+            $('#content-' + rel).find('.showless').remove();
+            $('#content-' + rel).next().remove();
+        });
     }
 }
     $(document).ready(createExcerpts());

@@ -4,7 +4,7 @@ $.fn.exists = function() {
 }
 function createExcerpts() {
     // do nothing on single post or page views
-    if($('body').hasClass('blog')) {
+    if(!$('body').hasClass('single') || !$('body').hasClass('page')) {
         // duplicate each post, adding appropriate classes
         $('.postcontent').each(function() {
             if($(this).hasClass('excerptCreated')) {

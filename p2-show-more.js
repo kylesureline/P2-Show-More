@@ -23,10 +23,10 @@ function createExcerpts() {
                     $(this).addClass('excerptCreated');
                     // begin by cloning the full post
                     var excerpt = $(this).clone();
+                    // remove ID from excerpt
+                    excerpt.removeAttr('id');
                     // hide fullpost
                     $(this).hide();
-                    // remove the unique ID from the fullpost
-                    $(this).attr('id','');
                     // grab the first image (if there is one) and resize it to a thumbnail
                     if(excerpt.find('img').exists()) {
                         var noEmoji = "";
@@ -82,10 +82,6 @@ function createExcerpts() {
         $('.showless').click(function(){
             var excerpt = $(this).parent().next();
             var fullpost = $(this).parent();
-            // prevent duplicate IDs
-            var ID = fullpost.attr('id');
-            fullpost.attr('id','');
-            excerpt.attr('id',ID);
             // animate
             fullpost.slideUp("slow", function() {
                 excerpt.slideDown("slow", function() {
@@ -98,10 +94,6 @@ function createExcerpts() {
         $('.showmore').click(function(){
             var excerpt = $(this).parent();
             var fullpost = $(this).parent().prev();
-            // prevent duplicate IDs
-            var ID = $(this).parent().attr('id');
-            fullpost.attr('id',ID);
-            excerpt.attr('id','');
             // animate
             excerpt.slideUp("slow", function() {
                 fullpost.slideDown("slow", function() {

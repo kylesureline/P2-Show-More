@@ -12,7 +12,7 @@ Automatically turn all posts into excerpts of 300 characters or less and add a "
 
 == Description ==
 
-Automatically turn all posts into excerpts of 300 characters or less and add a "Show More" link that will load directly in the page. Supports Infinite Scroll, too (assuming you manually enabled it on your P2 site)!
+Automatically turn all posts into excerpts of 300 characters or less and add a "Show More" link that will load directly in the page. If your post includes a picture, it will also obtain a thumbnail and place that at the beginning of the excerpt. Supports Infinite Scroll, too (assuming you manually enabled it on your P2 site)!
 
 == Installation ==
 

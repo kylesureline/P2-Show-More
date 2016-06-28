@@ -18,30 +18,20 @@ function createExcerpts() {
             // shorten the text inside the excerpt, removing HTML tags
             if(excerpt.find('img:first').exists()) {
                 var img = excerpt.find('img:first').clone();
-                img.removeClass('alignnone size-full');
+                img.removeClass('alignnone size-full size-large size-medium');
                 img.addClass('alignleft size-thumbnail');
                 // Set size to thumbnail...
                 img.attr('width', '150');
                 img.attr('height', '150');
-                // Strip full size attributes...
-                img.attr('sizes', '');
-                img.attr('srcset', '');
-                // Strip Jetpack gallery attributes...
-                img.attr('data-attachment-id', '');
-                img.attr('data-orig-file', '');
-                img.attr('data-orig-size', '');
-                img.attr('data-comments-opened', '');
-                img.attr('data-image-meta', '');
-                img.attr('data-image-title', '');
-                img.attr('data-image-description-medium-file', '');
-                img.attr('data-large-file', '');
-                img.attr('data-original-width', '');
-                img.attr('data-original-height', '');
-                img.attr('itemprop', '');
-                img.attr('style', '');
-                // Append filename with thumbnail filename
-                var source = img.attr('src');
-                source.replace('.jpg', '-150x150.jpg');
+                // Strip attributes (including Jetpack Gallery attributes)...
+                img.removeAttr('title sizes srcset data-image-description data-attachment-id data-orig-file data-orig-size data-medium-file data-comments-opened data-image-meta data-image-title data-image-description-medium-file data-large-file data-original-width data-original-height itemprop style');
+                // Remove Jetpack Photon Resizing Info
+                var oldSrc = img.attr('src');
+                oldSrc = oldSrc.replace(/\?resize=([0-9]|[A-Z])([0-9]|[A-Z])([0-9]|[A-Z])\%([0-9]|[A-Z])([0-9]|[A-Z])([0-9]|[A-Z])([0-9]|[A-Z])([0-9]|[A-Z])/, '');
+                // Add "-150x150" before file extension
+                var extension = oldSrc.substr(oldSrc.lastIndexOf('.') +1);
+                var newSrc = oldSrc.replace('.' + extension, '-150x150.' + extension);
+                img.attr('src', newSrc);
             }
             else {
                 var img = "";

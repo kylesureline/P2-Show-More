@@ -1,4 +1,7 @@
 (function($){
+$.fn.exists = function() {
+    return this.length !== 0;
+}
 function createExcerpts() {
     // duplicate each post, adding appropriate classes
     $('.postcontent').each(function() {
@@ -13,7 +16,39 @@ function createExcerpts() {
             // remove the unique ID from the fullpost
             $(this).attr('id','');
             // shorten the text inside the excerpt, removing HTML tags
+            if(excerpt.find('img:first').exists()) {
+                var img = excerpt.find('img:first').clone();
+                img.removeClass('alignnone size-full');
+                img.addClass('alignleft size-thumbnail');
+                // Set size to thumbnail...
+                img.attr('width', '150');
+                img.attr('height', '150');
+                // Strip full size attributes...
+                img.attr('sizes', '');
+                img.attr('srcset', '');
+                // Strip Jetpack gallery attributes...
+                img.attr('data-attachment-id', '');
+                img.attr('data-orig-file', '');
+                img.attr('data-orig-size', '');
+                img.attr('data-comments-opened', '');
+                img.attr('data-image-meta', '');
+                img.attr('data-image-title', '');
+                img.attr('data-image-description-medium-file', '');
+                img.attr('data-large-file', '');
+                img.attr('data-original-width', '');
+                img.attr('data-original-height', '');
+                img.attr('itemprop', '');
+                img.attr('style', '');
+                // Append filename with thumbnail filename
+                var newSource = img.attr('src').replace('.jpg', '-150x150.jpg');
+                newSource = img.attr('src').replace('jpeg', '-150x150.jpeg')
+                img.attr('src', newSource);
+            }
+            else {
+                var img = "";
+            }
             excerpt.html("<p>" + excerpt.text().substring(0,300) + "</p>");
+            excerpt.find('p').prepend(img);
             // hide fullpost
             $(this).hide();
             // add classes to indicate which is excerpt

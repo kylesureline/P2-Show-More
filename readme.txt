@@ -8,11 +8,13 @@ Stable tag: `/trunk/`
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Automatically turn all posts into excerpts of 300 characters or less and add a "Show More" link that will load directly in the page.
+Automatically turn all posts into excerpts of 300 characters and add a "Show More" link that will load directly in the page.
 
 == Description ==
 
-Automatically turn all posts into excerpts of 300 characters or less and add a "Show More" link that will load directly in the page. If your post includes a picture, it will also obtain a thumbnail and place that at the beginning of the excerpt. Supports Infinite Scroll, too (assuming you manually enabled it on your P2 site)!
+Automatically turn all posts into excerpts of 300 characters and add a "Show More" link that will load directly in the page. If your post includes a picture, it will also obtain a thumbnail and place that at the beginning of the excerpt. Supports Infinite Scroll, too (assuming you manually enabled it on your P2 site)!
+* Shorter posts will be left alone, unless they have a picture
+* Posts with a picture will always be turned into a thumbnail
 
 == Installation ==
 
@@ -42,7 +44,3 @@ You'll need to enable it manually. This plugin won't do that for you.
 
 = 1.0 =
 * Plugin release
-
-== Arbitrary section ==
-
-== A brief Markdown Example ==

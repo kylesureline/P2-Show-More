@@ -37,6 +37,9 @@ You'll need to enable it manually. This plugin won't do that for you.
 
 == Changelog ==
 
+= 1.1 =
+* Fix thumbnail generation for all images
+
 = 1.0 =
 * Plugin release
 

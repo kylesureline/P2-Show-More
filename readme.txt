@@ -30,6 +30,8 @@ You'll need to enable it manually. This plugin won't do that for you.
 1. Example of a P2 blog with plugin enabled.
 2. Sample post excerpt.
 3. Expanded full post.
+4. Sample of thumbnail.
+5. Expanded post with picture.
 
 == Changelog ==
 

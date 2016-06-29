@@ -50,7 +50,7 @@ function createExcerpts() {
                             img.removeAttr('title sizes srcset data-image-description data-attachment-id data-orig-file data-orig-size data-medium-file data-comments-opened data-image-meta data-image-title data-image-description-medium-file data-large-file data-original-width data-original-height itemprop style');
                             // Remove Jetpack Photon Resizing Info
                             var oldSrc = img.attr('src');
-                            oldSrc = oldSrc.replace(/\?resize=([0-9]|[A-Z])([0-9]|[A-Z])([0-9]|[A-Z])\%([0-9]|[A-Z])([0-9]|[A-Z])([0-9]|[A-Z])([0-9]|[A-Z])([0-9]|[A-Z])/, '');
+                            oldSrc = oldSrc.replace(/\?(.*)/, '');
                             // Add "-150x150" before file extension
                             var extension = oldSrc.substr(oldSrc.lastIndexOf('.') +1);
                             var newSrc = oldSrc.replace('.' + extension, '-150x150.' + extension);

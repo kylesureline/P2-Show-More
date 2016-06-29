@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Show More for P2 ===
 Contributors: kylesureline
 Donate link: http://www.kylescheuerlein.com/
 Tags: p2, excerpt, show, more

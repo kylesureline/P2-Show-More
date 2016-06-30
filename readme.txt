@@ -37,6 +37,10 @@ You'll need to enable it manually. This plugin won't do that for you.
 
 == Changelog ==
 
+= 1.2 =
+* Fix thumbnail generation for externally hosted images
+* Fix thumbnail generation for various sizes (Large, Medium) and alignments
+
 = 1.1 =
 * Fix thumbnail generation for all images
 

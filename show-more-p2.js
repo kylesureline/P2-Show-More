@@ -41,20 +41,48 @@ function createExcerpts() {
                         });
                         if( noEmoji != "") {
                             img = noEmoji;
-                            img.removeClass('alignnone size-full size-large size-medium');
-                            img.addClass('alignleft size-thumbnail');
-                            // Set size to thumbnail...
-                            img.attr('width', '150');
-                            img.attr('height', '150');
-                            // Strip attributes (including Jetpack Gallery attributes)...
-                            img.removeAttr('title sizes srcset data-image-description data-attachment-id data-orig-file data-orig-size data-medium-file data-comments-opened data-image-meta data-image-title data-image-description-medium-file data-large-file data-original-width data-original-height itemprop style');
-                            // Remove Jetpack Photon Resizing Info
-                            var oldSrc = img.attr('src');
-                            oldSrc = oldSrc.replace(/\?(.*)/, '');
-                            // Add "-150x150" before file extension
-                            var extension = oldSrc.substr(oldSrc.lastIndexOf('.') +1);
-                            var newSrc = oldSrc.replace('.' + extension, '-150x150.' + extension);
-                            img.attr('src', newSrc);
+                            // check if image is self hosted
+                            if(img.attr('src').indexOf(document.domain) >= 0) {
+                                var oldSrc = img.attr('src');
+                                // remove Jetpack Photon resizing info
+                                oldSrc = oldSrc.replace(/\?(.*)/, '');
+                                // check size of image
+                                if(img.hasClass('size-full')) {
+                                    img.removeClass('size-full');
+                                    // do nothing to filename
+                                    // add -150x150 to filename later
+                                }
+                                else if(img.hasClass('size-large')) {
+                                    img.removeClass('size-large');
+                                    // remove dimensions from filename (ie. 1024x575)
+                                    oldSrc = oldSrc.replace(/\-[0-9]{1,4}x[0-9]{1,3}\./, '.');
+                                }
+                                else {
+                                    img.removeClass('size-medium');
+                                    // remove dimensions from filename (ie. 300x168)
+                                    oldSrc = oldSrc.replace(/\-[0-9]{1,3}x[0-9]{1,3}\./, '.');
+                                }
+                                img.removeClass('alignnone alignright aligncenter');
+                                img.addClass('alignleft size-thumbnail');
+                                // Set size to thumbnail...
+                                img.attr('width', '150');
+                                img.attr('height', '150');
+                                // Strip attributes (including Jetpack Gallery attributes)...
+                                img.removeAttr('title sizes srcset data-image-description data-attachment-id data-orig-file data-orig-size data-medium-file data-comments-opened data-image-meta data-image-title data-image-description-medium-file data-large-file data-original-width data-original-height itemprop style');
+                                // Add "-150x150" before file extension
+                                var extension = oldSrc.substr(oldSrc.lastIndexOf('.') +1);
+                                var newSrc = oldSrc.replace('.' + extension, '-150x150.' + extension);
+                                img.attr('src', newSrc);
+                            }
+                            // if image isn't self-hosted, then process it differently
+                            // no way of knowing that adding -150x150 will return thumbnail
+                            else {
+                                img.removeClass('alignright aligncenter alignnone');
+                                img.addClass('alignleft size-thumbnail');
+                                img.attr('width', '150');
+                                img.attr('height', '150');
+                                img.attr('style', 'width:150px;height:150px;');
+                            }
                         }
                     }
                     // grab the vimeo iframe if there is one and there is no image

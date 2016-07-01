@@ -76,12 +76,13 @@ function createExcerpts() {
                             }
                             // if image isn't self-hosted, then process it differently
                             // no way of knowing that adding -150x150 will return thumbnail
+                            // force image to stretch to 150x150 pixels
                             else {
                                 img.removeClass('alignright aligncenter alignnone');
                                 img.addClass('alignleft size-thumbnail');
                                 img.attr('width', '150');
                                 img.attr('height', '150');
-                                img.attr('style', 'width:150px;height:150px;');
+                                img.attr('style', 'width:150px !important;height:150px !important;');
                             }
                         }
                     }

@@ -4,21 +4,17 @@ $.fn.exists = function() {
 }
 function createExcerpts() {
     // do nothing on single post or page views
-    if(!$('body').hasClass('single') || !$('body').hasClass('page')) {
+    if($('body').hasClass('blog')) {
         // duplicate each post, adding appropriate classes
         $('.postcontent').each(function() {
-            if($(this).hasClass('excerptCreated')) {
-                // do nothing
-            }
             // create excerpt
-            else {
+            if(!$(this).hasClass('excerptCreated')) {
                 // do nothing to short posts if they have no image
                 if($(this).text().length <= 300 && !$(this).find('img').exists()) {
                     $(this).addClass('excerptCreated');
                 }
                 else {
                     var img = "";
-                    var vimeo = "";
                     // indicate post has been processed
                     $(this).addClass('excerptCreated');
                     // begin by cloning the full post
@@ -76,25 +72,21 @@ function createExcerpts() {
                             }
                             // if image isn't self-hosted, then process it differently
                             // no way of knowing that adding -150x150 will return thumbnail
+                            // force image to stretch to 150x150 pixels
                             else {
                                 img.removeClass('alignright aligncenter alignnone');
                                 img.addClass('alignleft size-thumbnail');
                                 img.attr('width', '150');
                                 img.attr('height', '150');
-                                img.attr('style', 'width:150px;height:150px;');
+                                img.attr('style', 'width:150px !important;height:150px !important;');
                             }
                         }
-                    }
-                    // grab the vimeo iframe if there is one and there is no image
-                    else if (excerpt.find('.embed-vimeo').exists()) {
-                        vimeo = $(this).clone();
                     }
                     else {
                         var img = "";
                     }
                     // shorten the text inside the excerpt, removing HTML tags
                     excerpt.html("<p>" + excerpt.text().substring(0,300) + "</p>");
-                    excerpt.append(vimeo);
                     excerpt.find('p').prepend(img);
                     // add classes to indicate which is excerpt
                     excerpt.addClass('excerpt');

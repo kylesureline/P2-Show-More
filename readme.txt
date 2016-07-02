@@ -44,6 +44,9 @@ You'll need to enable it manually. This plugin won't do that for you.
 
 == Changelog ==
 
+= 1.3.1 =
+* Fix cache busting of jQuery file
+
 = 1.3 =
 * Bug fixes
 

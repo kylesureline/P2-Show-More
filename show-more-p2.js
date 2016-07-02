@@ -7,18 +7,14 @@ function createExcerpts() {
     if($('body').hasClass('blog')) {
         // duplicate each post, adding appropriate classes
         $('.postcontent').each(function() {
-            if($(this).hasClass('excerptCreated')) {
-                // do nothing
-            }
             // create excerpt
-            else {
+            if(!$(this).hasClass('excerptCreated')) {
                 // do nothing to short posts if they have no image
                 if($(this).text().length <= 300 && !$(this).find('img').exists()) {
                     $(this).addClass('excerptCreated');
                 }
                 else {
                     var img = "";
-                    var vimeo = "";
                     // indicate post has been processed
                     $(this).addClass('excerptCreated');
                     // begin by cloning the full post
@@ -86,16 +82,11 @@ function createExcerpts() {
                             }
                         }
                     }
-                    // grab the vimeo iframe if there is one and there is no image
-                    else if (excerpt.find('.embed-vimeo').exists()) {
-                        vimeo = $(this).clone();
-                    }
                     else {
                         var img = "";
                     }
                     // shorten the text inside the excerpt, removing HTML tags
                     excerpt.html("<p>" + excerpt.text().substring(0,300) + "</p>");
-                    excerpt.append(vimeo);
                     excerpt.find('p').prepend(img);
                     // add classes to indicate which is excerpt
                     excerpt.addClass('excerpt');

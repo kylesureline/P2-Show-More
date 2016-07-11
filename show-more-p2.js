@@ -4,7 +4,7 @@ $.fn.exists = function() {
 }
 function createExcerpts() {
     // do nothing on single post or page views
-    if($('body').hasClass('blog')) {
+    if($('body').hasClass('blog') || $('body').hasClass('archive') || $('body').hasClass('search')) {
         // duplicate each post, adding appropriate classes
         $('.postcontent').each(function() {
             // create excerpt
@@ -85,9 +85,16 @@ function createExcerpts() {
                     else {
                         var img = "";
                     }
+                    // get blog post title
+                    var title = "";
+                    if( excerpt.find('h2').exists() ) {
+                        title = excerpt.find('h2:first').clone();
+                        excerpt.find('h2:first').remove();
+                    }
                     // shorten the text inside the excerpt, removing HTML tags
                     excerpt.html("<p>" + excerpt.text().substring(0,300) + "</p>");
                     excerpt.find('p').prepend(img);
+                    excerpt.prepend(title);
                     // add classes to indicate which is excerpt
                     excerpt.addClass('excerpt');
                     $(this).addClass('fullpost');

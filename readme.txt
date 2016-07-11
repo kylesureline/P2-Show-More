@@ -44,6 +44,10 @@ You'll need to enable it manually. This plugin won't do that for you.
 
 == Changelog ==
 
+= 1.3.2 =
+* Fix excerpts on archive/category/search pages
+* Preserve the title on blog posts when making an excerpt
+
 = 1.3.1 =
 * Fix cache busting of jQuery file
 

@@ -19,6 +19,12 @@ function createExcerpts() {
                     $(this).addClass('excerptCreated');
                     // begin by cloning the full post
                     var excerpt = $(this).clone();
+                    // remove title link
+                    // make it contract fullpost instead
+                    if($(this).find('h2').exists()) {
+                        $(this).find('h2:first').find('a').addClass('showless');
+                        $(this).find('h2:first').find('a').removeAttr('href');
+                    }
                     // remove ID from excerpt
                     excerpt.removeAttr('id');
                     // hide fullpost
@@ -90,6 +96,8 @@ function createExcerpts() {
                     var title = "";
                     if( excerpt.find('h2').exists() ) {
                         title = excerpt.find('h2:first').clone();
+                        title.find('a').addClass('showmore');
+                        title.find('a').removeAttr('href');
                         excerpt.find('h2:first').remove();
                     }
                     // shorten the text inside the excerpt, removing HTML tags
@@ -108,8 +116,8 @@ function createExcerpts() {
             }
         });
         $('.showless').click(function(){
-            var excerpt = $(this).parent().next();
-            var fullpost = $(this).parent();
+            var excerpt = $(this).parents('.fullpost').next();
+            var fullpost = $(this).parents('.fullpost');
             // animate
             fullpost.slideUp("slow", function() {
                 excerpt.slideDown("slow", function() {

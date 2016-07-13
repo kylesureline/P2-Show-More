@@ -81,9 +81,10 @@ function createExcerpts() {
                                 img.attr('style', 'width:150px !important;height:150px !important;');
                             }
                         }
+                        img.addClass('showmore');
                     }
                     else {
-                        var img = "";
+                        img = "";
                     }
                     // get blog post title
                     var title = "";
@@ -119,8 +120,8 @@ function createExcerpts() {
             });
         });
         $('.showmore').click(function(){
-            var excerpt = $(this).parent();
-            var fullpost = $(this).parent().prev();
+            var excerpt = $(this).parents('.excerpt');
+            var fullpost = $(this).parents('.excerpt').prev();
             // animate
             excerpt.slideUp("slow", function() {
                 fullpost.slideDown("slow", function() {

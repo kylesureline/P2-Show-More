@@ -46,6 +46,7 @@ You'll need to enable it manually. This plugin won't do that for you.
 
 = 1.3.3 =
 * Clicking on thumbnails will expand posts
+* Clicking on blog post titles will expand posts
 
 = 1.3.2 =
 * Fix excerpts on archive/category/search pages

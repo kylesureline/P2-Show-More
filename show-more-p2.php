@@ -3,7 +3,7 @@
 Plugin Name: Show More for P2
 Plugin URI: https://wordpress.org/plugins/show-more-p2/
 Description: Automatically minimizes posts and adds a more link to display them inline.
-Version: 1.3.2
+Version: 1.3.3
 Author: Kyle Scheuerlein
 Author URI: http://www.kylescheuerlein.com
 License: GPL2
@@ -34,7 +34,7 @@ function show_more_p2_link_scripts() {
 	wp_enqueue_script('jquery');
  
 	// Load custom jQuery
-	wp_enqueue_script( 'show-more-p2', plugin_dir_url( __FILE__ ) . 'show-more-p2.js', array('jquery'), '1.3.2', true );
+	wp_enqueue_script( 'show-more-p2', plugin_dir_url( __FILE__ ) . 'show-more-p2.js', array('jquery'), '1.3.3', true );
  
 }
 add_action( 'wp_enqueue_scripts', 'show_more_p2_link_scripts' );
